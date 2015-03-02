@@ -1,0 +1,49 @@
+<!DOCTYPE>
+<html>
+<head>
+	<!-- <link rel="stylesheet" type="text/css" href="/stylesheets/pics.css"> -->
+	<title></title>
+</head>
+<style>
+	body {
+		margin: 0 auto;
+		padding: 0;
+		background: #000;
+	}
+	.blurred-pic {
+		z-index: 0;
+		position: fixed;
+		width: 100%;
+		height: 100%;
+		background: url('<%= url %>') center no-repeat;
+		background-size: cover;
+		filter: blur(10px);
+		-webkit-filter: blur(10px);
+	}
+
+	.mask {
+		position: fixed;
+		z-index: 1;
+		width: 100%;
+		height: 100%;
+		/*background: rgba(256,256,256,.5);*/
+		background: rgba(0,0,0,.5);
+	}
+	.sharp-pic {
+		z-index: 2;
+		position: fixed;
+		height: 100%;
+		width: 100%;
+
+		padding: 0;
+		margin: 0 auto;
+		background: url('<%= url %>') center no-repeat;
+		background-size: contain ;
+	}	
+</style>
+<body>
+	<div class="blurred-pic"></div>
+	<div class="mask"></div>
+	<div class="sharp-pic"></div>
+</body>
+</html> 

@@ -1,0 +1,107 @@
+<!DOCTYPE>
+<html>
+<head>
+	<title>Hello</title>
+
+	<link rel="stylesheet" type="text/css" href="/stylesheets/pics.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+</head>
+<body>
+
+<% include includes/nav.ejs %>
+
+	<div class="container">
+		<div class="content-head">
+			<%
+				for (var i in pictures) {
+			%>
+					<div class="project" id="<%= "btn-" + i %>"><%= i.replace("_"," ") %></div>
+			<%	
+				}
+			%>
+		</div>
+		<% for (var folder in pictures) { %>
+			<div class="content" id="content-<%=folder %>">
+				<div class="third" >
+					<%
+						for (var i in pictures[folder][0] ) {
+					%>
+<!-- 							<a href="/images/projects/HQ/<%=folder + "/" +pictures[folder][0][i]  %>">
+ -->
+ 							<a href="/projects/pic?url=/images/projects/HQ/<%=folder + "/" +pictures[folder][0][i]  %>">
+								<img class="col-pic" width="100%" src="<%= pathPrefix + folder + '/' + pictures[folder][0][i] %>">
+							</a>				<%
+						}
+					%>
+				</div>
+				<div class="third">
+					<%
+						for (var i in pictures[folder][1] ) {
+					%>
+ 							<a href="/projects/pic?url=/images/projects/HQ/<%=folder + "/" +pictures[folder][1][i]  %>">
+								<img class="col-pic" width="100%" src="<%= pathPrefix + folder + '/' + pictures[folder][1][i] %>">
+							</a>
+					<%
+						}
+					%>
+				</div>
+				<div class="third">
+					<%
+						for (var i in pictures[folder][2] ) {
+					%>
+ 							<a href="/projects/pic?url=/images/projects/HQ/<%=folder + "/" +pictures[folder][2][i]  %>">
+								<img class="col-pic" width="100%" src="<%= pathPrefix + folder + '/' + pictures[folder][2][i] %>">
+							</a>
+					<%
+						}
+					%>
+				</div>
+			</div>
+		<% } %>
+
+		<script type="text/javascript">
+
+			var projects = $('.project');
+			var first = projects[0].id.substring(4, projects[0].id.length);
+			var visibleFolder = first;
+			document.cookie = "james=hello; expires=Thu, 01 Jan 1970 00:00:00 GMT";
+			if ( document.cookie == "") {
+				document.cookie = "visibleFolder=" + visibleFolder + ";hello=what;";
+				console.log(document.cookie);
+			}
+			else {
+
+				var me = document.cookie.indexOf(';') < 0 ? /.*visibleFolder=(.*)/ : /.*visibleFolder=(.*);/; 
+				console.log(document.cookie);
+				console.log(me.exec(document.cookie));
+				visibleFolder = me.exec(document.cookie)[1];
+			}
+
+			$('#content-' + visibleFolder).css('display', 'block');
+			$('#btn-' + visibleFolder).addClass('selected');
+
+
+			for (var i in projects) {
+				if (projects[i].id == undefined) continue; 
+				var folder = projects[i].id.substring(4, projects[i].id.length);
+			
+
+
+				$('#' + projects[i].id).click (function (e) {
+					var thisFolder = this.id.substring(4, this.id.length);
+					document.cookie = "visibleFolder=" + thisFolder + ";";
+					console.log(document.cookie);
+					$('.content').css('display', 'none');
+					$('#content-' + thisFolder).css('display', 'block');
+
+					$('.selected').removeClass('selected');
+					$('#btn-' + thisFolder).addClass('selected');
+				});
+			}
+		</script>
+	</div>
+
+	<% include includes/footer.ejs %>
+
+</body>
+</html>

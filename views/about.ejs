@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>About</title>
+
+	<link rel="stylesheet" type="text/css" href="/stylesheets/pics.css">
+</head>
+<body>
+	<% include includes/nav.ejs %>
+	<div class="container">
+		<h2>
+			Light Colours
+		</h2>
+		<p>
+			One form of painting can be created using different forms of dyed water streaked upon a canvas to create an image. In photography, originally different forms of light travel through a lens onto a segment of film that, when exposed correctly, create an image. In this way photography is a light colour creation the way some paintings are water colour creations.
+		</p>
+
+		<h2> Peter </h2>
+		<p>
+			The creative mind and photographer at Light Colours. Peter is responsible for capturing and developing the images shown here.
+		</p>
+
+		<h2> Austin </h2>
+		<p>
+			The practical mind at Light Colours. Austin is responsible for branding, Media Presence, and the presentation fo the images shown.
+		</p>
+
+		<hr>
+		<form method="POST" action="/contactRequest">
+			<input type="text" name="name" placeholder="Name">
+			<input type="text" name="Subject" placeholder="subject">
+			<input type="email" name="email" placeholder="peter@lcstudiophotos.com">
+			<textarea rows="10" name="content"></textarea>
+			<input type="submit" value="Send">
+
+		</form>
+		</div>
+
+	<% include includes/footer.ejs %>
+</body>
+</html>

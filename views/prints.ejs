@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Hello</title>
+
+	<link rel="stylesheet" type="text/css" href="/stylesheets/pics.css">
+</head>
+<body>
+	<% include includes/nav.ejs %>
+	<div class="container">
+		<h1>
+			Hello,
+		</h1>
+		<p>
+			We are excited that you are looking to order prints. I would love to be able to do this and love to be able to tell you the moment it's possible. Please give me your email address and I will be sure to let your know when I have set things up. Also, be sure to follow me on social media to get updates on new images and profiles.
+		</p>
+
+		<form method="POST" action="/printMail">
+			<input class="input" type="email" name="email" placeholder="peter@lcstudiophotos.com">
+			<input type="submit" value="Sign Up">
+		</form>
+
+		</div>
+
+		<% include includes/footer.ejs %>
+</body>
+</html>
