@@ -21,8 +21,8 @@ router.get('/profile', function (req, res, next) {
 });
 
 router.get('/projects', function(req, res, next) {
-	var foldr = "./public/images/projects/LQ/";
-
+	var foldr = __dirname + "/../public/images/projects/LQ/";
+	console.log(foldr);
 	fs.readdir( foldr, function (err, folders) {
 		if (err) throw err;
 
